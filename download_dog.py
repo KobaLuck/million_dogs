@@ -6,18 +6,20 @@ import requests
 
 BASE_DIR = Path(__file__).parent
 URL = 'https://api.thedogapi.com/v1/images/search'
-DOGS_DIR = DOGS_DIR = BASE_DIR / 'dogs'
+DOGS_DIR = BASE_DIR / 'dogs'
 
 
 def get_new_image_url():
-    response = requests.get(URL).json()
+    response = requests.get(URL, timeout=30)
+    response.raise_for_status()
+    response = response.json()
     random_dog = response[0].get('url')
     return random_dog
 
 
 def download_file(url):
     filename = url.split('/')[-1]
-    response = requests.get(url)
+    response = requests.get(url, timeout=30)
     response.raise_for_status()  # Проверка, что запрос выполнен успешно
     with open(DOGS_DIR / filename, 'wb') as file:
         file.write(response.content)

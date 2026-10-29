@@ -1,43 +1,31 @@
-# Сто собак каждому
-Программа загружает сто картинок с собаками с сайта TheDogAPI, складывает эти файлы в одном месте и выводит список названий сохранённых файлов в терминал. 
+# Million Dogs
 
-## Установка
-- Создать виртуальное окружение
+Два способа загрузить 100 фотографий собак: последовательно и асинхронно.
 
-Windows
+**Python · requests · aiohttp · aiofiles**
 
-```bash
-python -m venv venv
-```
-
-Linux, OSX
+## Быстрый старт
 
 ```bash
-python3 -m venv venv
-```
-
-- Активировать окружение
-
-Windows
-
-```bash
-source ./venv/Scripts/activate
-```
-
-Linux, OSX
-
-```bash
-source ./venv/bin/activate
-```
-
-- Установить зависимости
-
-```bash
-pip install -r requirements.txt
-```
-
-## Запуск программы 
-
-```bash
+git clone https://github.com/KobaLuck/million_dogs.git
+cd million_dogs
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 python download_dog.py
+# Асинхронная версия:
+python async_download_dogs.py
 ```
+
+В Windows PowerShell окружение активируется командой `.venv\Scripts\Activate.ps1`.
+
+Изображения сохраняются в `dogs/` рядом со скриптами. Для работы нужен доступ к TheDogAPI и серверам изображений.
+
+## Структура
+
+- `async_download_dogs.py` — исходный код.
+- `download_dog.py` — исходный код.
+
+---
+
+[Никита Казанцев](https://github.com/KobaLuck) · [Все публичные проекты](https://github.com/KobaLuck?tab=repositories)
